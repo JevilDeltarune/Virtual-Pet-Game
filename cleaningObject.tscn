@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://dcvk4srw2kxil"]
+
+[ext_resource type="Script" uid="uid://beqbfh73c2g1e" path="res://cleaning_object.gd" id="1_6mtxy"]
+[ext_resource type="Texture2D" uid="uid://dbu1hyl32gr58" path="res://spoge.png" id="2_axeo2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxbv2"]
+size = Vector2(21, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axeo2"]
+size = Vector2(17, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mtxy"]
+size = Vector2(11, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujhf4"]
+size = Vector2(31, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8241g"]
+size = Vector2(25, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhyfq"]
+size = Vector2(20, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rm031"]
+size = Vector2(13, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6ycc"]
+size = Vector2(10, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aayxe"]
+size = Vector2(3, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp3ph"]
+size = Vector2(3, 5)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_6mtxy")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -18.0
+offset_top = -13.0
+offset_right = 16.0
+offset_bottom = 14.0
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(0.0915, 0.0915)
+texture = ExtResource("2_axeo2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, 4)
+shape = SubResource("RectangleShape2D_hxbv2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, 11)
+shape = SubResource("RectangleShape2D_axeo2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, 13)
+shape = SubResource("RectangleShape2D_6mtxy")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -3)
+shape = SubResource("RectangleShape2D_ujhf4")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -5)
+shape = SubResource("RectangleShape2D_8241g")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(5, -7.5)
+shape = SubResource("RectangleShape2D_bhyfq")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -11)
+shape = SubResource("RectangleShape2D_rm031")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
+position = Vector2(8, 1.5)
+shape = SubResource("RectangleShape2D_c6ycc")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, 6.5)
+shape = SubResource("RectangleShape2D_aayxe")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="."]
+position = Vector2(14.5, 0.5)
+shape = SubResource("RectangleShape2D_vp3ph")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

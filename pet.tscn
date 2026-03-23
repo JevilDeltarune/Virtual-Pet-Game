@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmsyk2m1h3d4m"]
+
+[ext_resource type="Texture2D" uid="uid://2pikbmr80xau" path="res://tortal.png" id="1_34gfr"]
+
+[sub_resource type="GDScript" id="GDScript_34gfr"]
+script/source = "extends CharacterBody2D
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34gfr"]
+size = Vector2(128, 130)
+
+[node name="pet" type="CharacterBody2D"]
+script = SubResource("GDScript_34gfr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_34gfr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_34gfr")
