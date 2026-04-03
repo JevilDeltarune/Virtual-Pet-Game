@@ -6,6 +6,8 @@ var happy = 100
 @export var point2: Vector2 = Vector2(638, 300)
 @export var food_numnum: Resource = preload("res://food.tscn")
 
+var fancytexture = load("res://Fancy Turtle.png")
+
 var run: bool = true
 
 var thoughts = ["I'm Hungry", "I'm Bored", "I'm Hungry And Bored"]
@@ -39,11 +41,8 @@ func spawn():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: 
-	$FeedScene/ReportCard.global_position = Vector2(9999, 99999)
-	$FeedScene/ThoughtBubble.hide()
-	repeat_for_time(dayLength)
 	$DebugScreen.hide()
-	
+	newDay()
 func end_game():
 	run = false
 
@@ -143,7 +142,7 @@ func getScore():
 func repeat_for_time(duration: float) -> void:
 	var timer := get_tree().create_timer(duration)
 	Globals.timeLeft = duration
-	$DebugScreen/TimerLabel.text = "Time Left: " + (str)(Globals.timeLeft)
+	$DebugScreen/TimerLabel.text = "Time Left: " + (str)(60 - (-1 * Globals.timeLeft))
 
 	while timer.time_left > 0:
 		getScore()
@@ -155,10 +154,14 @@ func repeat_for_time(duration: float) -> void:
 	$DebugScreen/FinalScoreLabel.text =(str)(Globals.finalScore)
 	if Globals.finalScore < 80:
 		Globals.rating = "Horrible"
+		Globals.gold += 10
 	elif Globals.finalScore < 90:
 		Globals.rating = "Mediocre"
+		Globals.gold += 35
 	elif Globals.finalScore > 95:
 		Globals.rating = "Great"
+		Globals.gold += 50
+		print("got 50 gold")
 	$DebugScreen/RatingLabel.text = Globals.rating
 	dayOver()
 	
@@ -173,6 +176,7 @@ func _input(event):
 
 
 func dayOver():
+	$FeedScene/ReportCard.show()
 	$FeedScene/HappyTimer.stop()
 	$FeedScene/FoodTimer.stop()
 	$FeedScene/DirtyTimer.stop()
@@ -182,6 +186,10 @@ func dayOver():
 	
 
 func newDay():
+	$FeedScene/ReportCard/CosmeticShop.hide()
+	$FeedScene/ReportCard.global_position = Vector2(9999, 99999)
+	$FeedScene/ThoughtBubble.hide()
+	repeat_for_time(dayLength)
 	$FeedScene/DirtyTimer.start()
 	$FeedScene/HappyTimer.start()
 	$FeedScene/FoodTimer.start()
@@ -207,8 +215,29 @@ func newDay():
 func _on_debug_pressed() -> void:
 	print("tutorial")
 	$RedCircle.show()
+	$Label.show()
 	$RedCircle/AnimationPlayer.play("Tutorial")
 
 
 func _on_new_day_button_pressed() -> void:
 	newDay()
+
+
+func _on_cosmetic_shop_button_pressed() -> void:
+	$FeedScene/ReportCard/CosmeticShop/GoldLabel.text = "You have "+ (str)(Globals.gold) + " Gold."
+	$FeedScene/ReportCard/CosmeticShop.show()
+
+
+func _on_buy_fancy_turtle_pressed() -> void:
+	if Globals.gold >= 50:
+		Globals.gold -= 50
+		$FeedScene/Pet/Sprite2D.texture = fancytexture
+	else:
+		print("get mo money bozo")
+	$FeedScene/ReportCard/CosmeticShop/GoldLabel.text = "You have "+ (str)(Globals.gold) + " Gold."
+
+
+func _on_exit_shop_pressed() -> void:
+	$FeedScene/ReportCard/CosmeticShop.hide()
+	
+	

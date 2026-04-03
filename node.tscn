@@ -1,13 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0r1evw83a2py"]
+[gd_scene load_steps=25 format=3 uid="uid://b0r1evw83a2py"]
 
 [ext_resource type="Script" uid="uid://b5350kt85kr6x" path="res://node.gd" id="1_l6pdb"]
 [ext_resource type="Script" uid="uid://ctnq0c0vdlif6" path="res://feed_scene.gd" id="2_r657h"]
 [ext_resource type="FontFile" uid="uid://otbox4ntpju1" path="res://ProffesionalEdition-Z8P8.ttf" id="3_f0urt"]
-[ext_resource type="PackedScene" uid="uid://cmsyk2m1h3d4m" path="res://pet.tscn" id="4_jfkdj"]
+[ext_resource type="Texture2D" uid="uid://crucguy8xv5ft" path="res://Actual updated turtle.png" id="4_436f3"]
 [ext_resource type="PackedScene" uid="uid://dcvk4srw2kxil" path="res://cleaningObject.tscn" id="5_wt6go"]
 [ext_resource type="Texture2D" uid="uid://c3rowpem7d4ud" path="res://360_F_404014988_7N8rNOa9ezLOZx6O6JEscLyNCpLLZhGW.png" id="6_436f3"]
 [ext_resource type="Script" uid="uid://mwkhup8yh0u0" path="res://shop_scene.gd" id="7_bcos8"]
 [ext_resource type="Texture2D" uid="uid://pt6pssbedk33" path="res://thought bubble.png" id="7_wt6go"]
+[ext_resource type="Texture2D" uid="uid://b8dx532h2s4yr" path="res://Fancy Turtle.png" id="8_bcos8"]
 [ext_resource type="Script" uid="uid://cq0wna0vj2nwi" path="res://buy_food.gd" id="8_r657h"]
 [ext_resource type="Texture2D" uid="uid://d123ynffjupd6" path="res://shop.jpg" id="9_f0urt"]
 [ext_resource type="Script" uid="uid://pan5mjg7f6lq" path="res://texture_rect.gd" id="10_jfkdj"]
@@ -18,6 +19,13 @@ bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2q8x"]
 bg_color = Color(0.0376309, 0.999486, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_34gfr"]
+script/source = "extends CharacterBody2D
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34gfr"]
+size = Vector2(128, 130)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hphxb"]
 bg_color = Color(1, 0, 0, 1)
@@ -57,6 +65,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0.122593, 0.117037)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["This is your money"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Label:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(51, 89)]
+}
 
 [sub_resource type="Animation" id="Animation_bcos8"]
 resource_name = "Tutorial"
@@ -68,7 +100,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.266667, 0.666667, 1.1, 1.56667, 2, 2.44, 2.93333, 3.43, 3.86667, 4.36, 4.7, 5.46667, 6.3, 6.63333, 7.13333, 7.16667),
+"times": PackedFloat32Array(0.266667, 0.666667, 1.1, 1.56667, 2, 2.44, 2.93333, 3.43, 4.13333, 4.36, 5.1, 5.46667, 6.3, 6.63333, 7.13333, 7.16667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(16, 58), Vector2(16, 22), Vector2(16, 22), Vector2(572, 236), Vector2(572, 236), Vector2(332, 240), Vector2(332, 240), Vector2(570.5, 331), Vector2(570.5, 331), Vector2(568.5, 460.5), Vector2(568.5, 460.5), Vector2(1065, 30), Vector2(1065, 30), Vector2(1064, 87), Vector2(1064, 87), Vector2(99999, 259)]
@@ -80,10 +112,42 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.266667, 0.666667, 1.1, 1.56667, 2, 2.44, 2.93333, 3.43, 3.86667, 4.36, 4.7, 5.46667, 6.3),
+"times": PackedFloat32Array(0.266667, 0.666667, 1.1, 1.56667, 2, 2.44, 2.93333, 3.43, 4.16667, 4.63333, 5.1, 5.76667, 6.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0.122593, 0.117037), Vector2(0.122593, 0.117037), Vector2(0.122593, 0.117037), Vector2(0.340926, 0.321481), Vector2(0.340926, 0.321481), Vector2(0.128796, 0.127407), Vector2(0.128796, 0.127407), Vector2(0.64537, 0.208148), Vector2(0.64537, 0.208148), Vector2(0.530556, 0.434259), Vector2(0.530556, 0.434259), Vector2(0.122593, 0.117037), Vector2(0.122593, 0.117037)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.69, 1.1, 1.56, 1.56667, 2, 2.43333, 2.93333, 3.43333, 3.76667, 3.93, 4.16667, 4.64, 5.1, 5.78, 6.3, 6.62),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["This is your money", "This is your money", "This is how much food you have", "This is how much food you have", "This is your pet, take good care of it", "This is your pet, take good care of it", "This is your pet, take good care of it", "Use the sponge to clean your pet
+for money", "Use the sponge to clean your pet
+for money", "Your pets happiness bar", "Your pets happiness bar", "Your pets hunger bar", "Your pets hunger bar", "Click these buttons to raise each 
+respective bar, note that you
+need food to feed the pet", "Click these buttons to raise each 
+respective bar, note that you
+need food to feed the pet", "Go to the shop to buy food, its 
+10 dollars a piece", "Go to the shop to buy food, its 
+10 dollars a piece", "Click here for more info"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Label:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.666667, 1.1, 1.56667, 2, 2.44, 2.93333, 3.44, 3.76667, 3.93, 4.16667, 4.64, 5.1, 5.76667, 6.3, 6.62, 7.13333, 7.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(51, 89), Vector2(51, 89), Vector2(109, 1), Vector2(109, 1), Vector2(652, 213), Vector2(652, 213), Vector2(123, 122), Vector2(123, 122), Vector2(726, 299), Vector2(726, 299), Vector2(724, 330), Vector2(724, 330), Vector2(701, 401), Vector2(701, 401), Vector2(569, 0.999999), Vector2(569, 0.999999), Vector2(787, 119), Vector2(787, 119), Vector2(5562, 2528)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_feppd"]
@@ -141,8 +205,16 @@ autostart = true
 [node name="FoodTimer" type="Timer" parent="FeedScene"]
 autostart = true
 
-[node name="Pet" parent="FeedScene" instance=ExtResource("4_jfkdj")]
+[node name="Pet" type="CharacterBody2D" parent="FeedScene"]
 position = Vector2(574, 232)
+script = SubResource("GDScript_34gfr")
+
+[node name="Sprite2D" type="Sprite2D" parent="FeedScene/Pet"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_436f3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FeedScene/Pet"]
+shape = SubResource("RectangleShape2D_34gfr")
 
 [node name="LineEdit" type="LineEdit" parent="FeedScene"]
 offset_left = 511.0
@@ -187,10 +259,10 @@ show_behind_parent = true
 light_mask = 512
 visibility_layer = 512
 z_index = -1
-offset_left = -1346.0
-offset_top = -25.0
-offset_right = -165.0
-offset_bottom = 667.0
+offset_left = -45.0001
+offset_top = -54.0
+offset_right = 1136.0
+offset_bottom = 638.0
 scale = Vector2(1.01487, 1.07165)
 mouse_filter = 2
 texture = ExtResource("6_436f3")
@@ -271,12 +343,68 @@ vertical_alignment = 1
 
 [node name="NewDayButton" type="Button" parent="FeedScene/ReportCard"]
 layout_mode = 0
-offset_left = 131.0
-offset_top = 301.0
-offset_right = 325.0
-offset_bottom = 431.0
+offset_left = 132.0
+offset_top = 412.0
+offset_right = 326.0
+offset_bottom = 542.0
 theme_override_fonts/font = ExtResource("3_f0urt")
 text = "NEXT DAY"
+
+[node name="CosmeticShopButton" type="Button" parent="FeedScene/ReportCard"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 283.0
+offset_right = 287.0
+offset_bottom = 366.0
+text = "Cosmetic Shop"
+
+[node name="CosmeticShop" type="ColorRect" parent="FeedScene/ReportCard"]
+layout_mode = 0
+offset_left = -136.0
+offset_top = 81.0
+offset_right = 574.0
+offset_bottom = 472.0
+color = Color(0.8879, 0.902714, 0.752424, 1)
+
+[node name="TitleLabel" type="Label" parent="FeedScene/ReportCard/CosmeticShop"]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 14.0
+offset_right = 456.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Cosmetic Shop"
+
+[node name="FancyTurtle" type="Sprite2D" parent="FeedScene/ReportCard/CosmeticShop"]
+position = Vector2(188, 180)
+scale = Vector2(0.502, 0.502)
+texture = ExtResource("8_bcos8")
+
+[node name="BuyFancyTurtle" type="Button" parent="FeedScene/ReportCard/CosmeticShop"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 264.0
+offset_right = 243.0
+offset_bottom = 321.0
+text = "Buy Fancy Turtle
+50 Gold
+"
+
+[node name="GoldLabel" type="Label" parent="FeedScene/ReportCard/CosmeticShop"]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 62.0
+offset_right = 403.0
+offset_bottom = 85.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "placeholder"
+
+[node name="ExitShop" type="Button" parent="FeedScene/ReportCard/CosmeticShop"]
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 47.0
+text = "Exit"
 
 [node name="ShopScene" type="Node2D" parent="."]
 visible = false
@@ -384,6 +512,18 @@ texture = ExtResource("13_436f3")
 libraries = {
 &"": SubResource("AnimationLibrary_feppd")
 }
+speed_scale = 0.5
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 51.0
+offset_top = 89.0
+offset_right = 528.0
+offset_bottom = 200.0
+scale = Vector2(0.955197, 1.00442)
+theme_override_font_sizes/font_size = 25
+text = "This is your money"
+horizontal_alignment = 1
 
 [connection signal="ready" from="." to="FeedScene/Sprite2D" method="_on_main_ready"]
 [connection signal="ready" from="." to="ShopScene" method="_on_main_ready"]
@@ -399,6 +539,9 @@ libraries = {
 [connection signal="timeout" from="FeedScene/DirtyTimer" to="." method="_on_dirty_timer_timeout"]
 [connection signal="pressed" from="FeedScene/debug" to="." method="_on_debug_pressed"]
 [connection signal="pressed" from="FeedScene/ReportCard/NewDayButton" to="." method="_on_new_day_button_pressed"]
+[connection signal="pressed" from="FeedScene/ReportCard/CosmeticShopButton" to="." method="_on_cosmetic_shop_button_pressed"]
+[connection signal="pressed" from="FeedScene/ReportCard/CosmeticShop/BuyFancyTurtle" to="." method="_on_buy_fancy_turtle_pressed"]
+[connection signal="pressed" from="FeedScene/ReportCard/CosmeticShop/ExitShop" to="." method="_on_exit_shop_pressed"]
 [connection signal="pressed" from="ShopScene/X_button" to="FeedScene" method="_on_x_button_pressed"]
 [connection signal="pressed" from="ShopScene/X_button" to="ShopScene" method="_on_x_button_pressed"]
 [connection signal="pressed" from="ShopScene/X_button" to="ShopScene/TextureRect" method="_on_x_button_pressed"]

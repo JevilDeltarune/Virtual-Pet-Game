@@ -14,3 +14,5 @@ var timeLeft = 0
 var rating = "Placeholder"
 
 var dirtOnPet = 0
+
+var gold = 0

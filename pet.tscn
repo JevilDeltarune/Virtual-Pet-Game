@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmsyk2m1h3d4m"]
 
-[ext_resource type="Texture2D" uid="uid://2pikbmr80xau" path="res://tortal.png" id="1_34gfr"]
+[ext_resource type="Texture2D" uid="uid://crucguy8xv5ft" path="res://Actual updated turtle.png" id="1_34gfr"]
 
 [sub_resource type="GDScript" id="GDScript_34gfr"]
 script/source = "extends CharacterBody2D
