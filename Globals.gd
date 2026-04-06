@@ -16,3 +16,5 @@ var rating = "Placeholder"
 var dirtOnPet = 0
 
 var gold = 0
+
+var isSick = false
