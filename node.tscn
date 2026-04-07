@@ -5,7 +5,6 @@
 [ext_resource type="FontFile" uid="uid://otbox4ntpju1" path="res://ProffesionalEdition-Z8P8.ttf" id="3_f0urt"]
 [ext_resource type="Texture2D" uid="uid://crucguy8xv5ft" path="res://Actual updated turtle.png" id="4_436f3"]
 [ext_resource type="PackedScene" uid="uid://dcvk4srw2kxil" path="res://cleaningObject.tscn" id="5_wt6go"]
-[ext_resource type="Texture2D" uid="uid://c3rowpem7d4ud" path="res://360_F_404014988_7N8rNOa9ezLOZx6O6JEscLyNCpLLZhGW.png" id="6_436f3"]
 [ext_resource type="Script" uid="uid://mwkhup8yh0u0" path="res://shop_scene.gd" id="7_bcos8"]
 [ext_resource type="Texture2D" uid="uid://pt6pssbedk33" path="res://thought bubble.png" id="7_wt6go"]
 [ext_resource type="Texture2D" uid="uid://b8dx532h2s4yr" path="res://Fancy Turtle.png" id="8_bcos8"]
@@ -13,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d123ynffjupd6" path="res://shop.jpg" id="9_f0urt"]
 [ext_resource type="Script" uid="uid://pan5mjg7f6lq" path="res://texture_rect.gd" id="10_jfkdj"]
 [ext_resource type="Texture2D" uid="uid://cmcxalhstx3lm" path="res://Red Circle.png" id="13_436f3"]
+[ext_resource type="Texture2D" uid="uid://d0vh63sxyv4u4" path="res://Screenshot_2026-03-23_133736-Picsart-AiImageEnhancer.png" id="13_bcos8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy5k4"]
 bg_color = Color(1, 0, 0, 1)
@@ -92,7 +92,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_bcos8"]
 resource_name = "Tutorial"
-length = 10.0
+length = 7.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -249,24 +249,9 @@ icon = SubResource("CanvasTexture_vixca")
 
 [node name="DirtyTimer" type="Timer" parent="FeedScene"]
 wait_time = 3.0
-autostart = true
 
 [node name="Sprite2D" parent="FeedScene" instance=ExtResource("5_wt6go")]
 position = Vector2(331, 237)
-
-[node name="TextureRect" type="TextureRect" parent="FeedScene"]
-show_behind_parent = true
-light_mask = 512
-visibility_layer = 512
-z_index = -1
-offset_left = -45.0001
-offset_top = -54.0
-offset_right = 1136.0
-offset_bottom = 638.0
-scale = Vector2(1.01487, 1.07165)
-mouse_filter = 2
-texture = ExtResource("6_436f3")
-stretch_mode = 1
 
 [node name="ThoughtBubble" type="Sprite2D" parent="FeedScene"]
 position = Vector2(731, 142)
@@ -295,6 +280,7 @@ offset_bottom = 114.0
 text = "Help"
 
 [node name="ReportCard" type="ColorRect" parent="FeedScene"]
+visible = false
 z_index = 4
 offset_left = 347.0
 offset_top = 26.0
@@ -319,10 +305,10 @@ vertical_alignment = 1
 
 [node name="Grade" type="Label" parent="FeedScene/ReportCard"]
 layout_mode = 0
-offset_left = 70.0
-offset_top = 109.0
-offset_right = 372.0
-offset_bottom = 181.0
+offset_left = 71.0
+offset_top = 67.0
+offset_right = 373.0
+offset_bottom = 139.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_f0urt")
 text = "placeholder"
@@ -331,10 +317,10 @@ vertical_alignment = 1
 
 [node name="Score" type="Label" parent="FeedScene/ReportCard"]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 201.0
-offset_right = 368.0
-offset_bottom = 252.0
+offset_left = 74.0
+offset_top = 97.0
+offset_right = 369.0
+offset_bottom = 148.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_f0urt")
 text = "placeholder"
@@ -352,13 +338,15 @@ text = "NEXT DAY"
 
 [node name="CosmeticShopButton" type="Button" parent="FeedScene/ReportCard"]
 layout_mode = 0
-offset_left = 165.0
-offset_top = 283.0
-offset_right = 287.0
-offset_bottom = 366.0
+offset_left = 163.0
+offset_top = 251.0
+offset_right = 285.0
+offset_bottom = 316.0
 text = "Cosmetic Shop"
 
 [node name="CosmeticShop" type="ColorRect" parent="FeedScene/ReportCard"]
+visible = false
+z_index = 3
 layout_mode = 0
 offset_left = -136.0
 offset_top = 81.0
@@ -405,6 +393,107 @@ layout_mode = 0
 offset_right = 54.0
 offset_bottom = 47.0
 text = "Exit"
+
+[node name="DoctorButton" type="Button" parent="FeedScene/ReportCard"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 330.0
+offset_right = 281.0
+offset_bottom = 390.0
+text = "Visit The Vet?
+10 Gold"
+
+[node name="VetRect" type="ColorRect" parent="FeedScene/ReportCard"]
+visible = false
+z_index = 3
+layout_mode = 0
+offset_left = 89.0
+offset_top = 159.0
+offset_right = 365.0
+offset_bottom = 431.0
+
+[node name="TitleLabel" type="Label" parent="FeedScene/ReportCard/VetRect"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 6.0
+offset_right = 182.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f0urt")
+theme_override_font_sizes/font_size = 33
+text = "Vet Bill"
+
+[node name="VetBillLabel" type="Label" parent="FeedScene/ReportCard/VetRect"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 79.0
+offset_right = 179.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f0urt")
+theme_override_font_sizes/font_size = 20
+text = "placeholder"
+
+[node name="HideButton" type="Button" parent="FeedScene/ReportCard/VetRect"]
+layout_mode = 0
+offset_right = 276.0
+offset_bottom = 272.0
+flat = true
+
+[node name="Stats" type="Control" parent="FeedScene/ReportCard"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Base Score" type="Label" parent="FeedScene/ReportCard/Stats"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 145.0
+offset_right = 266.0
+offset_bottom = 168.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "placeholder"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DirtPenalty" type="Label" parent="FeedScene/ReportCard/Stats"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 179.0
+offset_right = 339.0
+offset_bottom = 202.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "placeholder"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SickPenalty" type="Label" parent="FeedScene/ReportCard/Stats"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 208.0
+offset_right = 267.0
+offset_bottom = 231.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "placeholder"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gold Counter" type="Label" parent="FeedScene/ReportCard"]
+layout_mode = 0
+offset_right = 141.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f0urt")
+text = "20 gold"
+
+[node name="ColorRect" type="ColorRect" parent="FeedScene"]
+z_index = -11
+offset_left = -395.0
+offset_top = -182.0
+offset_right = 1565.0
+offset_bottom = 847.0
+mouse_filter = 2
+color = Color(0.462745, 0.678431, 1, 1)
 
 [node name="ShopScene" type="Node2D" parent="."]
 visible = false
@@ -521,9 +610,24 @@ offset_top = 89.0
 offset_right = 528.0
 offset_bottom = 200.0
 scale = Vector2(0.955197, 1.00442)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f0urt")
 theme_override_font_sizes/font_size = 25
 text = "This is your money"
 horizontal_alignment = 1
+
+[node name="Sneaky blocker block" type="ColorRect" parent="."]
+offset_left = -2674.0
+offset_top = -656.0
+offset_right = -1522.0
+offset_bottom = -8.0
+color = Color(1, 0, 0, 0)
+
+[node name="Screenshot2026-03-23133736-picsart-aiImageEnhancer" type="Sprite2D" parent="."]
+z_index = -7
+position = Vector2(558.5, 267.75)
+scale = Vector2(0.50734, 0.593175)
+texture = ExtResource("13_bcos8")
 
 [connection signal="ready" from="." to="FeedScene/Sprite2D" method="_on_main_ready"]
 [connection signal="ready" from="." to="ShopScene" method="_on_main_ready"]
@@ -542,6 +646,9 @@ horizontal_alignment = 1
 [connection signal="pressed" from="FeedScene/ReportCard/CosmeticShopButton" to="." method="_on_cosmetic_shop_button_pressed"]
 [connection signal="pressed" from="FeedScene/ReportCard/CosmeticShop/BuyFancyTurtle" to="." method="_on_buy_fancy_turtle_pressed"]
 [connection signal="pressed" from="FeedScene/ReportCard/CosmeticShop/ExitShop" to="." method="_on_exit_shop_pressed"]
+[connection signal="pressed" from="FeedScene/ReportCard/DoctorButton" to="." method="_on_doctor_button_pressed"]
+[connection signal="pressed" from="FeedScene/ReportCard/VetRect/HideButton" to="." method="_on_hide_button_pressed"]
+[connection signal="pressed" from="ShopScene/X_button" to="." method="_on_x_button_pressed"]
 [connection signal="pressed" from="ShopScene/X_button" to="FeedScene" method="_on_x_button_pressed"]
 [connection signal="pressed" from="ShopScene/X_button" to="ShopScene" method="_on_x_button_pressed"]
 [connection signal="pressed" from="ShopScene/X_button" to="ShopScene/TextureRect" method="_on_x_button_pressed"]

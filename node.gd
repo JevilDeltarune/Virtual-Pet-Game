@@ -42,7 +42,28 @@ func spawn():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: 
 	$DebugScreen.hide()
+	print("tutorial")
+
+	$FeedScene/FoodTimer.paused = true
+	$FeedScene/HappyTimer.paused = true
+	$FeedScene/DirtyTimer.paused = true
+	$FeedScene/FoodTimer
+	$FeedScene/ReportCard.hide()
+	$RedCircle.show()
+	$Label.show()
+	$"Sneaky blocker block".set_global_position(Vector2(0,0))
+	$RedCircle/AnimationPlayer.play("Tutorial")
+	await $RedCircle/AnimationPlayer.animation_finished
+	$"Sneaky blocker block".mouse_filter = 2
+	$"Sneaky blocker block".set_global_position(Vector2(0,0))
+	print("start game")
 	newDay()
+	$FeedScene/FoodTimer.paused = false
+	$FeedScene/HappyTimer.paused = false
+	$FeedScene/DirtyTimer.paused = false
+	
+
+
 func end_game():
 	run = false
 
@@ -130,12 +151,13 @@ func _on_dirty_timer_timeout() -> void:
 
 
 func _on_shop_button_pressed() -> void:
-	pass # Replace with function body.
+	$FeedScene.hide()
+	Globals.showDirt = true
 
 
 func getScore():
 	Globals.score = (Globals.score + ((float)(happy + hunger)))/3
-	$DebugScreen/ScoreLabel.text = (str)(Globals.score)
+	$DebugScreen/ScoreLabel.text = "Base Score: " + (str)(Globals.score)
 	Globals.totalScore += Globals.score 
 	Globals.timesRan += 1
 	
@@ -150,17 +172,18 @@ func repeat_for_time(duration: float) -> void:
 		Globals.finalScore = Globals.totalScore / Globals.timesRan - (Globals.dirtOnPet)
 		$DebugScreen/CurrentFinalScore.text = "Current Final Score: " + (str)(Globals.finalScore - Globals.dirtOnPet)
 		await get_tree().process_frame
-	Globals.finalScore = Globals.totalScore / Globals.timesRan
+	if Globals.isSick:
+		Globals.finalScore = Globals.totalScore / Globals.timesRan - (Globals.dirtOnPet) - 20
 	$DebugScreen/FinalScoreLabel.text =(str)(Globals.finalScore)
 	if Globals.finalScore < 80:
 		Globals.rating = "Horrible"
-		Globals.gold += 10
+		Globals.gold += 5
 	elif Globals.finalScore < 90:
 		Globals.rating = "Mediocre"
-		Globals.gold += 35
+		Globals.gold += 35/2
 	elif Globals.finalScore > 95:
 		Globals.rating = "Great"
-		Globals.gold += 50
+		Globals.gold += 25
 		print("got 50 gold")
 	$DebugScreen/RatingLabel.text = Globals.rating
 	dayOver()
@@ -184,8 +207,23 @@ func dayOver():
 	$FeedScene/ReportCard/Grade.text = "You did " + (str)(Globals.rating)
 	$FeedScene/ReportCard/Score.text = "You got a " + (str)((int)(Globals.finalScore))
 	
+	$FeedScene/ReportCard/Stats/DirtPenalty.text = "-" + (str)(Globals.dirtOnPet) + " for dirt left on pet"
+	if Globals.isSick:
+		$FeedScene/ReportCard/Stats/SickPenalty.text = "-20 for your pet being sick"
+		$"FeedScene/ReportCard/Stats/Base Score".text = "Base Score: " + (str)((int)(Globals.finalScore + Globals.dirtOnPet + 20))
+	else:
+		$FeedScene/ReportCard/Stats/SickPenalty.text = "-0 for your pet being healthy"
+		$"FeedScene/ReportCard/Stats/Base Score".text = "Base Score: " + (str)((int)(Globals.finalScore + Globals.dirtOnPet))
+		
+	var random = randi_range(1, 5)
+	if (random == 5):
+		Globals.isSick = true
+	print((str)(random) + " " + (str)(Globals.isSick))
+	$"FeedScene/ReportCard/Gold Counter".text = "Gold: " + (str)(Globals.gold)
+	
 
 func newDay():
+	print("new day")
 	$FeedScene/ReportCard/CosmeticShop.hide()
 	$FeedScene/ReportCard.global_position = Vector2(9999, 99999)
 	$FeedScene/ThoughtBubble.hide()
@@ -226,6 +264,7 @@ func _on_new_day_button_pressed() -> void:
 func _on_cosmetic_shop_button_pressed() -> void:
 	$FeedScene/ReportCard/CosmeticShop/GoldLabel.text = "You have "+ (str)(Globals.gold) + " Gold."
 	$FeedScene/ReportCard/CosmeticShop.show()
+	$"FeedScene/ReportCard/Gold Counter".text = "Gold: " + (str)(Globals.gold)
 
 
 func _on_buy_fancy_turtle_pressed() -> void:
@@ -235,9 +274,43 @@ func _on_buy_fancy_turtle_pressed() -> void:
 	else:
 		print("get mo money bozo")
 	$FeedScene/ReportCard/CosmeticShop/GoldLabel.text = "You have "+ (str)(Globals.gold) + " Gold."
+	$"FeedScene/ReportCard/Gold Counter".text = "Gold: " + (str)(Globals.gold)
 
 
 func _on_exit_shop_pressed() -> void:
 	$FeedScene/ReportCard/CosmeticShop.hide()
+	$"FeedScene/ReportCard/Gold Counter".text = "Gold: " + (str)(Globals.gold)
 	
 	
+
+
+func _on_x_button_pressed() -> void:
+	$FeedScene.show()
+	Globals.showDirt = false
+	$"FeedScene/ReportCard/Gold Counter".text = "Gold: " + (str)(Globals.gold)
+
+func gameStart():
+	newDay()
+	
+	
+
+
+
+func _on_doctor_button_pressed() -> void:
+	if Globals.gold >= 10:
+		Globals.gold -= 10
+		$FeedScene/ReportCard/VetRect.show()
+		if Globals.isSick:
+			Globals.isSick = false
+			$FeedScene/ReportCard/VetRect/VetBillLabel.text = "Your pet was sick"
+		else:
+			$FeedScene/ReportCard/VetRect/VetBillLabel.text = "Your pet wasn't sick"
+		
+	else:
+		print("brokie")
+	$"FeedScene/ReportCard/Gold Counter".text = "Gold: " + (str)(Globals.gold)
+
+
+func _on_hide_button_pressed() -> void:
+	$FeedScene/ReportCard/VetRect.hide()
+	$"FeedScene/ReportCard/Gold Counter".text = "Gold: " + (str)(Globals.gold)
